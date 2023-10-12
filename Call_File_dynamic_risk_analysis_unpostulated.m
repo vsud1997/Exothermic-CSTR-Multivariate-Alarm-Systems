@@ -9,8 +9,10 @@ output_ESD_failure_probability = zeros(N_runs,1);
 
 tic
 parpool('local',4);
+batch_start = 1
+batch_end = 10
 
-parfor i = 1:3
+parfor i = batch_start:batch_end
 
     [N_L, N_ESD, N_L_to_ESD, N_basin_B, time_L_ESD, time_ESD_basin_B, Avg_N_B ] = dynamic_risk_analysis_unpostulated(N_sim, tau_init);
     output_var(i, :) = [N_L, N_ESD, N_L_to_ESD, N_basin_B, Avg_N_B ];
